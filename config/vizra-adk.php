@@ -17,14 +17,14 @@ return [
      * - 'voyageai' or 'voyage' - Voyage AI (Embeddings)
      * - 'openrouter' - OpenRouter (Access 100+ models through unified API)
      */
-    'default_provider' => env('VIZRA_ADK_DEFAULT_PROVIDER', 'google'),
+    'default_provider' => env('VIZRA_ADK_DEFAULT_PROVIDER', 'openai'),
 
     /**
      * Default LLM model to use with Prism-PHP.
      * This can be overridden by specific agent configurations.
      * Example: 'gemini-pro', 'gpt-4-turbo', 'claude-3-opus-20240229'
      */
-    'default_model' => env('VIZRA_ADK_DEFAULT_MODEL', 'gemini-1.5-flash'),
+    'default_model' => env('VIZRA_ADK_DEFAULT_MODEL', 'got-4o'),
 
     /**
      * Default generation parameters for LLM requests.
@@ -48,7 +48,7 @@ return [
     /**
      * Provider-specific configurations.
      * Configure API keys and settings for each LLM provider.
-     * 
+     *
      * Note: Most providers are configured through Prism PHP's configuration.
      * Set these environment variables in your .env file:
      * - OPENAI_API_KEY
@@ -60,7 +60,7 @@ return [
      * - XAI_API_KEY
      * - VOYAGEAI_API_KEY
      * - OPENROUTER_API_KEY
-     * 
+     *
      * For OpenRouter:
      * - API Key: Get from https://openrouter.ai/settings
      * - Base URL: https://openrouter.ai/api/v1 (handled by Prism)
