@@ -14,11 +14,6 @@ jobs:
   ci:
     runs-on: ubuntu-latest
 
-    env:
-      DB_DATABASE: cody_bot
-      DB_USER: root
-      DB_PASSWORD: root
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,12 +21,12 @@ jobs:
       - name: Set up MySQL
         run: |
           sudo /etc/init.d/mysql start
-          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+          mysql -e 'CREATE DATABASE cody_bot;'
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.4
+          php-version: 8.2
           tools: composer:v2
           coverage: xdebug
 
