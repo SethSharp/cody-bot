@@ -214,6 +214,16 @@ return [
             'timeout' => 30,
         ],
 
+        'linear' => [
+            'command' => 'npx',
+            'args' => [
+                '-y',
+                'mcp-remote',
+                'https://mcp.linear.app/sse'
+            ],
+            'enabled' => env('MCP_LINEAR_ENABLED', false),
+        ],
+
         // Example custom MCP server
         // 'custom_api' => [
         //     'command' => 'python',
