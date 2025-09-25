@@ -165,11 +165,17 @@ return [
         ],
 
         'github' => [
-            'command' => env('MCP_NPX_PATH', 'npx'),
+            'command' => 'docker',
             'args' => [
-                '@modelcontextprotocol/server-github',
-                '--token',
-                env('GITHUB_TOKEN', ''),
+                'run',
+                '-i',
+                '--rm',
+                '-e',
+                env('GITHUB_TOKEN'),
+                'mcp/github:latest'
+            ],
+            'env' => [
+                'GITHUB_PERSONAL_ACCESS_TOKEN' => '${input:github_token}'
             ],
             'enabled' => env('MCP_GITHUB_ENABLED', false) && ! empty(env('GITHUB_TOKEN')),
             'timeout' => 45,

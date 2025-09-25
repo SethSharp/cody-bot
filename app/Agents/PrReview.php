@@ -23,9 +23,19 @@ class PrReview extends BaseLlmAgent
      * The prompt file has been created for you at:
      * resources/prompts/pr_review/default.blade.php
      */
-    protected string $instructions = 'You are Pr Review. See resources/prompts/pr_review/default.blade.php for full instructions.';
+    protected string $instructions = 'You are an expert code reviewer. You can:
+
+    1. Read code files to understand implementations
+    2. Search for patterns and potential issues
+    3. Suggest improvements and best practices
+
+    Always provide constructive feedback with specific examples.';
 
     protected string $model = 'gpt-4o';
+    protected array $mcpServers = [
+        'filsystem',
+        'github'
+    ];
 
     protected array $tools = [
         // Example: YourTool::class,
