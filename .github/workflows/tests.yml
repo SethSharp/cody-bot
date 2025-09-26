@@ -24,7 +24,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:17
+        image: pgvector/pgvector:pg17
         ports: [ 5432:5432 ]
         env:
           POSTGRES_DB: cody_bot_testing
