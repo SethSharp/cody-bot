@@ -37,7 +37,10 @@ class PrReview extends BaseLlmAgent
     1. Store important information about the PR being reviewed
     2. Remember previously discussed issues and comments
     3. Track user preferences for review style and focus areas
-    4. Build context over time to provide more personalized and consistent reviews';
+    4. Build context over time to provide more personalized and consistent reviews
+
+    You also have access to slite to query documents relating to best practises which should be considered when reviewing PRs.
+    ';
 
     protected string $model = 'gpt-4o';
     protected bool $includeConversationHistory = true;
@@ -45,8 +48,9 @@ class PrReview extends BaseLlmAgent
     protected int $historyLimit = 15;
 
     protected array $mcpServers = [
-        'filesystem',
-        'github'
+        'slite',
+        'github',
+        'linear',
     ];
 
     protected array $tools = [

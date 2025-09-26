@@ -219,6 +219,19 @@ return [
                 'https://mcp.linear.app/sse'
             ],
             'enabled' => env('MCP_LINEAR_ENABLED', false),
+            'timeout' => 30,
+        ],
+
+        'slite' => [
+            'command' => 'node',
+            'args' => [
+                '.././slite-mcp/build/index.js',
+            ],
+            'env' => [
+                'SLITE_API_KEY' => env('MCP_SLITE_API_KEY'),
+            ],
+            'enabled' => env('MCP_SLITE_ENABLED', false) && ! empty('MCP_SLITE_API_KEY'),
+            'timeout' => 30,
         ],
 
         // Example custom MCP server
