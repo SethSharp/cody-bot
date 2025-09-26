@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DB_DATABASE: cody_bot
+      DB_DATABASE: cody_bot_testing
       DB_USER: root
       DB_PASSWORD: root
 
