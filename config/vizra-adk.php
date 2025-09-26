@@ -171,11 +171,8 @@ return [
                 '-i',
                 '--rm',
                 '-e',
-                env('GITHUB_TOKEN'),
-                'mcp/github:latest'
-            ],
-            'env' => [
-                'GITHUB_PERSONAL_ACCESS_TOKEN' => '${input:github_token}'
+                'GITHUB_PERSONAL_ACCESS_TOKEN=' . env('GITHUB_TOKEN'),
+                'ghcr.io/github/github-mcp-server'
             ],
             'enabled' => env('MCP_GITHUB_ENABLED', false) && ! empty(env('GITHUB_TOKEN')),
             'timeout' => 45,
