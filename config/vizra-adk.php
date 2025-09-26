@@ -314,7 +314,7 @@ return [
          */
         'drivers' => [
             'pgvector' => [
-                'connection' => env('VIZRA_ADK_PGVECTOR_CONNECTION', 'mysql'),
+                'connection' => env('VIZRA_ADK_PGVECTOR_CONNECTION', 'pgsql'),
             ],
 
             'meilisearch' => [

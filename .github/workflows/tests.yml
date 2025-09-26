@@ -15,18 +15,31 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      DB_CONNECTION: pgsql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 5432
       DB_DATABASE: cody_bot_testing
-      DB_USER: root
-      DB_PASSWORD: root
+      DB_USERNAME: postgres
+      DB_PASSWORD: password
+
+    services:
+      postgres:
+        image: postgres:17
+        ports: [ 5432:5432 ]
+        env:
+          POSTGRES_DB: sharp_odds_testing
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up MySQL
-        run: |
-          sudo /etc/init.d/mysql start
-          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -34,6 +47,7 @@ jobs:
           php-version: 8.3
           tools: composer:v2
           coverage: xdebug
+          extensions: pdo_pgsql
 
       - name: Setup Node
         uses: actions/setup-node@v4
